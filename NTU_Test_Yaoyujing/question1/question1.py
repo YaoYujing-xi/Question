@@ -1,21 +1,23 @@
 # coding: utf-8
 import pandas as pd
 import numpy as np
+#Given an m x n matrix, specify a value, construct a path sum result and return the path result for this specified value.
 
+#Record feasible paths
 def drawpath(df1,num_sum,N,m,n):
     for i in range(N):
         steps = main_func(m,n,num_sum[i])
         if (steps != 0):
-            StepsStr= ''.join(steps)
+            s_string= ''.join(steps)
             new = pd.DataFrame({'num_sum':num_sum[i],
-                                'path':StepsStr},index=[i]  )
+                                'path':s_string},index=[i]  )
             df1 = df1.append(new,ignore_index=True)
         else:
-            StepsStr = 'false'
+            s_string = 'false'
     order = ['num_sum','path']
     df1 = df1[order]
     return df1
-
+#Main function, realize path query
 def main_func(m,n,num_sum):
     step_count = m+n-2
     path = ['0']*step_count

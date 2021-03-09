@@ -9,6 +9,9 @@ for j in range(n):
     for i in range(m):
         if (inp[i,j] == 1):
             inp[i,j] = -1
+
+#For a given image s, 0 means background, -1 means non-background,
+#For candidate pixels, s_i_j, find the component that connects it and mark its index
 def fill_img(s,i,j,index):
     if (s[i,j]==-1):
         s[i,j] = index
@@ -21,6 +24,7 @@ def fill_img(s,i,j,index):
         if(j+1<=n-1and s[i,j+1]==-1):
             fill_img(s,i,j+1,index)
     return
+#Change the pixel value from 1 to -1 for easy labeling
 for j in range(n):
     for i in range(m):
         if (inp[i,j]==-1):
